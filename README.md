@@ -11,5 +11,7 @@ This is a quick implementation for [Deep Hypersphere Embedding for Face Recognit
 - **2**. show the accuracy and loss comparison of different softmax in the experiment;
 - **3**. 2D and 3D visualization of embeddings learned with differnet softmax loss on MNIST dataset;
 
+### softmax loss
+
 
 
