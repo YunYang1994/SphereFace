@@ -18,3 +18,7 @@ This is a quick implementation for [Deep Hypersphere Embedding for Face Recognit
 |modified softmax|![weibo-logo](https://github.com/YunYang1994/SphereFace/blob/master/image/modified_softmax.png)|
 |angular softmax|![weibo-logo](https://github.com/YunYang1994/SphereFace/blob/master/image/angular_softmax.png)|
 
+### 2D visualization
+|original softmax|modified softmax|angular softmax|
+|---|---|:---:|
+|![weibo-logo](https://github.com/YunYang1994/SphereFace/blob/master/image/2D_Original_Softmax_Loss_embeddings.jpg)|![weibo-logo](https://github.com/YunYang1994/SphereFace/blob/master/image/2D_Modified_Softmax_Loss_embeddings.jpg)|![weibo-logo](https://github.com/YunYang1994/SphereFace/blob/master/image/2D_Angular_Softmax_Loss_embeddings.jpg)|
