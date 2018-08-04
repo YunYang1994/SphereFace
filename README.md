@@ -12,6 +12,10 @@ This is a quick implementation for [Deep Hypersphere Embedding for Face Recognit
 - **3**. 2D and 3D visualization of embeddings learned with differnet softmax loss on MNIST dataset;
 
 ### softmax loss
-
+Let's revisit the original softmax loss:
+<p align="center">
+    <img width="70%" src="https://github.com/YunYang1994/SphereFace/blob/master/image/softmax.jpg" style="max-width:90%;">
+    </a>
+</p>
 
 
