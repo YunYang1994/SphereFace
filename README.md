@@ -16,7 +16,7 @@ Let's revisit the original softmax loss:
 
 |#|softmax|formula|
 |---|----|:---:|
-|original softmax|`it's clear that `|![weibo-logo](https://github.com/YunYang1994/SphereFace/blob/master/image/original_softmax.png)|
-|modified softmax|`it's clear that `|![weibo-logo](https://github.com/YunYang1994/SphereFace/blob/master/image/modified_softmax.png)|
-|angular softmax|`it's clear that `|![weibo-logo](https://github.com/YunYang1994/SphereFace/blob/master/image/angular_softmax.png)|
+|original softmax|![weibo-logo](https://github.com/YunYang1994/SphereFace/blob/master/image/original_softmax.png)|
+|modified softmax|![weibo-logo](https://github.com/YunYang1994/SphereFace/blob/master/image/modified_softmax.png)|
+|angular softmax|![weibo-logo](https://github.com/YunYang1994/SphereFace/blob/master/image/angular_softmax.png)|
 
