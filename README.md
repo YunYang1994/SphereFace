@@ -13,9 +13,7 @@ This is a quick implementation for [Deep Hypersphere Embedding for Face Recognit
 
 ### softmax loss
 Let's revisit the original softmax loss:
-<p align="center">
-    <img width="70%" src="https://github.com/YunYang1994/SphereFace/blob/master/image/softmax.jpg" style="max-width:90%;">
-    </a>
-</p>
 
-
+|#|softmax|formula|
+|---|----|:---:|
+|original softmax|`it's clear that `|![weibo-logo](https://github.com/YunYang1994/SphereFace/blob/master/image/softmax.jpg)|
