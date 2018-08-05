@@ -16,9 +16,9 @@ This is a quick implementation for [Deep Hypersphere Embedding for Face Recognit
 ### softmax loss
 |softmax|formula|test acc(MNIST)|
 |---|---|:---:|
-|original softmax|![weibo-logo](https://github.com/YunYang1994/SphereFace/blob/master/image/original_softmax.png)|0.9769|
-|modified softmax|![weibo-logo](https://github.com/YunYang1994/SphereFace/blob/master/image/modified_softmax.png)|0.9837|
-|angular softmax|![weibo-logo](https://github.com/YunYang1994/SphereFace/blob/master/image/angular_softmax.png)|0.9902|
+|original softmax|![weibo-logo](https://github.com/YunYang1994/SphereFace/blob/master/image/original_softmax.png)|0.9775|
+|modified softmax|![weibo-logo](https://github.com/YunYang1994/SphereFace/blob/master/image/modified_softmax.png)|0.9847|
+|angular softmax|![weibo-logo](https://github.com/YunYang1994/SphereFace/blob/master/image/angular_softmax.png)|0.9896|
 
 ### 2D visualization
 |original softmax|modified softmax|angular softmax|
