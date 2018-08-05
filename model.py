@@ -58,19 +58,19 @@ class Model(object):
         """
         w_init = tf.contrib.layers.xavier_initializer(uniform=False)
         with tf.name_scope('conv1'):
-            net = tf.layers.conv2d(inputs, 32, [3,3], strides=1, padding='same', kernel_initializer=w_init)
+            net = tf.layers.conv2d(inputs, 32, [5,5], strides=1, padding='same', kernel_initializer=w_init)
             net = tf.layers.batch_normalization(net, training=trainable)
             net = tf.nn.relu(net)
         with tf.name_scope('conv2'):
-            net = tf.layers.conv2d(net,    64, [3,3], strides=2, padding='same', kernel_initializer=w_init)
+            net = tf.layers.conv2d(net,    64, [5,5], strides=2, padding='same', kernel_initializer=w_init)
             net = tf.layers.batch_normalization(net, training=trainable)
             net = tf.nn.relu(net)
         with tf.name_scope('conv3'):
-            net = tf.layers.conv2d(net,   128, [3,3], strides=1, padding='valid',kernel_initializer=w_init)
+            net = tf.layers.conv2d(net,   128, [5,5], strides=1, padding='valid',kernel_initializer=w_init)
             net = tf.layers.batch_normalization(net, training=trainable)
             net = tf.nn.relu(net)
         with tf.name_scope('conv4'):
-            net = tf.layers.conv2d(net,   128, [3,3], strides=2, padding='valid',kernel_initializer=w_init)
+            net = tf.layers.conv2d(net,   256, [5,5], strides=2, padding='valid',kernel_initializer=w_init)
             net = tf.layers.batch_normalization(net, training=trainable)
             net = tf.nn.relu(net)
         net = tf.layers.flatten(net)

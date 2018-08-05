@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import tensorflow as tf
+import numpy as np
 import model
 import matplotlib.pyplot as plt
 from tqdm import tqdm
@@ -30,9 +31,10 @@ mnist = input_data.read_data_sets("./MNIST_data", one_hot=False, reshape=False)
 
 # define training parameters
 lr = 0.001
-epochs = 10
+epochs = 20
 batch_size = 512
-batchs = 100 # the number of batchs per epoch
+train_batchs = 100 # the number of batchs per epoch
+test_batchs  = 20
 embedding_dim = 2 # 3
 
 
@@ -65,7 +67,7 @@ def train():
         train_acc = []; train_loss = []
         print('training loss type %d' %loss_type)
         for epoch in range(epochs):
-            for batch in tqdm(range(batchs)):
+            for batch in tqdm(range(train_batchs)):
                 batch_images, batch_labels = mnist.train.next_batch(batch_size)
                 feed_dict = {images:batch_images, labels:batch_labels}
                 _, _, batch_loss, batch_acc = sess.run([train_op, add_step_op, loss, accuracy], feed_dict)
@@ -73,14 +75,17 @@ def train():
                 train_loss.append(batch_loss)
         # testing process
         test_acc = 0.
-        for batch in range(100):
+        embeddings = np.zeros((test_batchs*batch_size, embedding_dim), dtype=np.float32)
+        nlabels = np.zeros(shape=(test_batchs*batch_size,), dtype=np.int32)
+        for batch in range(test_batchs):
+            i,j = batch*batch_size, (batch+1)*batch_size
             batch_images, batch_labels = mnist.test.next_batch(batch_size)
             feed_dict = {images:batch_images, labels:batch_labels}
-
-            _, batch_loss, batch_acc, embeddings = sess.run([train_op, loss, accuracy, network.embeddings], feed_dict)
+            _, batch_loss, batch_acc, embeddings[i:j,:] = sess.run([train_op, loss, accuracy, network.embeddings], feed_dict)
+            nlabels[i:j] = batch_labels
             test_acc += batch_acc
-        test_acc /= 100
-        yield train_acc, train_loss, test_acc, embeddings, batch_labels
+        test_acc /= test_batchs
+        yield train_acc, train_loss, test_acc, embeddings, nlabels
 
 
 def visualize(embedding, label, test_acc=0., picname=''):
