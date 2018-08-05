@@ -2,7 +2,8 @@
 |---|---
 |E-mail|dreameryangyun@sjtu.edu.cn
 
-
+[![Build Status](https://travis-ci.org/raghakot/keras-resnet.svg?branch=master)](https://travis-ci.org/raghakot/keras-resnet)
+[![license](https://img.shields.io/github/license/mashape/apistatus.svg?maxAge=2592000)](https://github.com/raghakot/keras-resnet/blob/master/LICENSE)
 SphereFace
 ===========================
 This is a quick implementation for [Deep Hypersphere Embedding for Face Recognition](https://arxiv.org/abs/1704.08063).This paper proposed the angular softmax loss that enables convolutional neural networks(CNNs) to learn angularly discriminative features. The main content I replicated contains: <br>
@@ -33,5 +34,7 @@ This is a quick implementation for [Deep Hypersphere Embedding for Face Recognit
 |---|:---:|
 |![weibo-logo](https://github.com/YunYang1994/SphereFace/blob/master/image/train_loss.jpg)|![weibo-logo](https://github.com/YunYang1994/SphereFace/blob/master/image/train_acc.jpg)|
 
-
+```math
+$\frac{1}{N},\sum_{n}^{i},L_{i}$
+```
 
