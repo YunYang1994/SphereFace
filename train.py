@@ -31,7 +31,7 @@ mnist = input_data.read_data_sets("./MNIST_data", one_hot=False, reshape=False)
 
 # define training parameters
 lr = 0.001
-epochs = 20
+epochs = 10
 batch_size = 512
 train_batchs = 100 # the number of batchs per epoch
 test_batchs  = 20

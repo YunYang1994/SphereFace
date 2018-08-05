@@ -57,22 +57,24 @@ class Model(object):
         @return: embeddings (batch_size, embedding_dim)
         """
         w_init = tf.contrib.layers.xavier_initializer(uniform=False)
-        with tf.name_scope('conv1'):
+        with tf.name_scope('conv1.x'):
             net = tf.layers.conv2d(inputs, 32, [5,5], strides=1, padding='same', kernel_initializer=w_init)
+            net = tf.layers.conv2d(net,    32, [5,5], strides=1, padding='same', kernel_initializer=w_init)
             net = tf.layers.batch_normalization(net, training=trainable)
             net = tf.nn.relu(net)
-        with tf.name_scope('conv2'):
+            net = tf.layers.max_pooling2d(net, [2,2], 2, padding='same')
+        with tf.name_scope('conv2.x'):
+            net = tf.layers.conv2d(net,    64, [5,5], strides=2, padding='same', kernel_initializer=w_init)
             net = tf.layers.conv2d(net,    64, [5,5], strides=2, padding='same', kernel_initializer=w_init)
             net = tf.layers.batch_normalization(net, training=trainable)
             net = tf.nn.relu(net)
-        with tf.name_scope('conv3'):
-            net = tf.layers.conv2d(net,   128, [5,5], strides=1, padding='valid',kernel_initializer=w_init)
+            net = tf.layers.max_pooling2d(net, [2,2], 2, padding='same')
+        with tf.name_scope('conv3.x'):
+            net = tf.layers.conv2d(net,   128, [5,5], strides=1, padding='same',kernel_initializer=w_init)
+            net = tf.layers.conv2d(net,   128, [5,5], strides=1, padding='same',kernel_initializer=w_init)
             net = tf.layers.batch_normalization(net, training=trainable)
             net = tf.nn.relu(net)
-        with tf.name_scope('conv4'):
-            net = tf.layers.conv2d(net,   256, [5,5], strides=2, padding='valid',kernel_initializer=w_init)
-            net = tf.layers.batch_normalization(net, training=trainable)
-            net = tf.nn.relu(net)
+            net = tf.layers.max_pooling2d(net, [2,2], 2, padding='valid')
         net = tf.layers.flatten(net)
         embeddings = tf.layers.dense(net, units=embedding_dim, kernel_initializer=w_init)
         return embeddings
@@ -130,7 +132,7 @@ class Model(object):
         the value of margin proposed by the author of paper is 4.
         here the margin value is 4.
         """
-        l = 1
+        l = 0.
         embeddings_norm = tf.norm(embeddings, axis=1)
 
         with tf.variable_scope("softmax"):
