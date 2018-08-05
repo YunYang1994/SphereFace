@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/raghakot/keras-resnet.svg?branch=master)](https://travis-ci.org/raghakot/keras-resnet)
+[![Build Status](https://travis-ci.org/raghakot/keras-resnet.svg?branch=master)](https://github.com/YunYang1994/SphereFace)
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg?maxAge=2592000)](https://github.com/YunYang1994/SphereFace/blob/master/LICENSE)
 
 |Author|YunYang1994|
