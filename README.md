@@ -35,7 +35,5 @@ This is a quick implementation for [Deep Hypersphere Embedding for Face Recognit
 |---|:---:|
 |![weibo-logo](https://github.com/YunYang1994/SphereFace/blob/master/image/train_loss.jpg)|![weibo-logo](https://github.com/YunYang1994/SphereFace/blob/master/image/train_acc.jpg)|
 
-```math
-$\frac{1}{N},\sum_{n}^{i},L_{i}$
-```
+
 
