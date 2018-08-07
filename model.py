@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-
+# import math
 import tensorflow as tf
 
 """
@@ -16,13 +16,12 @@ class Model(object):
            ==
     """
     def __init__(self, images, labels, embedding_dim,
-                 loss_type = 0, weight_decay=0.001, trainable=True):
+                 loss_type = 0, weight_decay=0.001):
         self.images = images
         self.labels = labels
         self.embedding_dim = embedding_dim
         self.loss_type = loss_type
         self.weight_decay = weight_decay
-        self.trainable = trainable
         self.embeddings = self.__get_embeddings()
         self.pred_prob, self.loss = self.__get_loss()
         self.predictions = self.__get_pred()
@@ -32,8 +31,7 @@ class Model(object):
     def __get_embeddings(self):
         return self.network(inputs=self.images,
                             embedding_dim=self.embedding_dim,
-                            weight_decay=self.weight_decay,
-                            trainable=self.trainable)
+                            weight_decay=self.weight_decay)
 
     def __get_loss(self):
         if self.loss_type == 0: return self.Original_Softmax_Loss(self.embeddings, self.labels)
@@ -50,7 +48,7 @@ class Model(object):
 
 
     @staticmethod
-    def network(inputs, embedding_dim=2, weight_decay=0.0, trainable = True):
+    def network(inputs, embedding_dim=2, weight_decay=0.0):
         """
         This is a simple convolutional neural network to extract features from images
         @inputs: images (batch_size, 28, 28, 1); embedding_dim , the num of dimension of embeddings
@@ -59,20 +57,17 @@ class Model(object):
         w_init = tf.contrib.layers.xavier_initializer(uniform=False)
         with tf.name_scope('conv1.x'):
             net = tf.layers.conv2d(inputs, 32, [5,5], strides=1, padding='same', kernel_initializer=w_init)
-            net = tf.layers.conv2d(net,    32, [5,5], strides=1, padding='same', kernel_initializer=w_init)
-            net = tf.layers.batch_normalization(net, training=trainable)
+            net = tf.layers.conv2d(net,    32, [5,5], strides=2, padding='same', kernel_initializer=w_init)
             net = tf.nn.relu(net)
             net = tf.layers.max_pooling2d(net, [2,2], 2, padding='same')
         with tf.name_scope('conv2.x'):
+            net = tf.layers.conv2d(net,    64, [5,5], strides=1, padding='same', kernel_initializer=w_init)
             net = tf.layers.conv2d(net,    64, [5,5], strides=2, padding='same', kernel_initializer=w_init)
-            net = tf.layers.conv2d(net,    64, [5,5], strides=2, padding='same', kernel_initializer=w_init)
-            net = tf.layers.batch_normalization(net, training=trainable)
             net = tf.nn.relu(net)
             net = tf.layers.max_pooling2d(net, [2,2], 2, padding='same')
         with tf.name_scope('conv3.x'):
             net = tf.layers.conv2d(net,   128, [5,5], strides=1, padding='same',kernel_initializer=w_init)
-            net = tf.layers.conv2d(net,   128, [5,5], strides=1, padding='same',kernel_initializer=w_init)
-            net = tf.layers.batch_normalization(net, training=trainable)
+            net = tf.layers.conv2d(net,   128, [5,5], strides=2, padding='same',kernel_initializer=w_init)
             net = tf.nn.relu(net)
             net = tf.layers.max_pooling2d(net, [2,2], 2, padding='valid')
         net = tf.layers.flatten(net)
@@ -123,7 +118,7 @@ class Model(object):
             return pred_prob, loss
 
     @staticmethod
-    def Angular_Softmax_Loss(embeddings, labels):
+    def Angular_Softmax_Loss(embeddings, labels, margin=4):
         """
         Note:(about the value of margin)
         as for binary-class case, the minimal value of margin is 2+sqrt(3)
@@ -151,7 +146,6 @@ class Model(object):
             #   ....
             #   [128,9]]
             selected_logits = tf.gather_nd(orgina_logits, single_sample_label_index)
-
             cos_theta = tf.div(selected_logits, embeddings_norm)
             cos_theta_power = tf.square(cos_theta)
             cos_theta_biq = tf.pow(cos_theta, 4)
@@ -170,5 +164,6 @@ class Model(object):
             loss = tf.reduce_mean(tf.nn.sparse_softmax_cross_entropy_with_logits(labels=labels,logits=updated_logits))
             pred_prob = tf.nn.softmax(logits=updated_logits)
             return pred_prob, loss
+
 
 
