@@ -60,9 +60,9 @@ class Model(object):
                 net = tf.layers.conv2d(inputs, filters, kernel_size, strides, padding=padding,
                                     kernel_initializer=w_init, name=conv_name)
                 output_shape=net.get_shape().as_list()
-                print("==============================================================================")
+                print("=================================================================================")
                 print("layer:%8s    input shape:%8s   output shape:%8s" %(conv_name, str(input_shape), str(output_shape)))
-                print("------------------------------------------------------------------------------")
+                print("---------------------------------------------------------------------------------")
                 net = prelu(net, name=relu_name)
                 return net
 
