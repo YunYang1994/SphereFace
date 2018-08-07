@@ -51,14 +51,19 @@ class Model(object):
             return tf.maximum(alpha*inputs, inputs)
 
         def conv(inputs, filters, kernel_size, strides, w_init, padding='same', suffix='', scope=None):
-
+            conv_name = 'conv'+suffix
+            relu_name = 'relu'+suffix
             with tf.name_scope(name=scope):
                 if w_init == 'xavier':   w_init = tf.contrib.layers.xavier_initializer(uniform=True)
                 if w_init == 'gaussian': w_init = tf.contrib.layers.xavier_initializer(uniform=False)
-
-                net = tf.layers.conv2d(inputs, filters, kernel_size, strides, padding,
-                                    kernel_initializer=w_init, name='conv'+suffix)
-                net = prelu(inputs, name='relu'+suffix)
+                input_shape = inputs.get_shape().as_list()
+                net = tf.layers.conv2d(inputs, filters, kernel_size, strides, padding=padding,
+                                    kernel_initializer=w_init, name=conv_name)
+                output_shape=net.get_shape().as_list()
+                print("==============================================================================")
+                print("layer:%8s    input shape:%8s   output shape:%8s" %(conv_name, str(input_shape), str(output_shape)))
+                print("------------------------------------------------------------------------------")
+                net = prelu(net, name=relu_name)
                 return net
 
         def resnet_block(net, blocks, suffix=''):
@@ -69,11 +74,12 @@ class Model(object):
                 net = conv(inputs=net,
                            filters=blocks[i]['filters'],
                            kernel_size=blocks[i]['kernel_size'],
-                           strides=blocks[i]['kernel_size'],
+                           strides=blocks[i]['strides'],
                            w_init=blocks[i]['w_init'],
                            padding=blocks[i]['padding'],
                            suffix=suffix+'_'+blocks[i]['suffix'],
                            scope='conv'+suffix+'_'+blocks[i]['suffix'])
+
                 if n == 3 and i == 0: identity = net
             return identity + net
 
