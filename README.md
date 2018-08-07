@@ -13,6 +13,16 @@ This is a quick implementation for [Deep Hypersphere Embedding for Face Recognit
 - **2**. show the accuracy and loss comparison of different softmax in the experiment;
 - **3**. 2D and 3D visualization of embeddings learned with differnet softmax loss on MNIST dataset;
 
+### network
+many current CNNS can viewed as convolution feature learning guided by softmax loss on top. however, softmax is easy to to optimize but does not explicitly encourage large margin between different classes.
+<p align="center">
+    <img width="70%" src="https://github.com/YunYang1994/SphereFace/blob/master/image/network.png" style="max-width:90%;">
+    </a>
+</p>
+
+
+
+
 ### softmax loss
 |softmax|formula|test acc(MNIST)|
 |---|---|:---:|
