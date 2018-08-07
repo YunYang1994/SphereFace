@@ -41,7 +41,7 @@ A toy example on MNIST dataset, CNN features can be visualized by setting the ou
 ### 3D visualization
 |original softmax|modified softmax|angular softmax|
 |---|---|:---:|
-|![weibo-logo](https://github.com/YunYang1994/SphereFace/blob/master/image/3D_Original_Softmax_Loss_embeddings.jpg)|![weibo-logo](https://github.com/YunYang1994/SphereFace/blob/master/image/3D_Modified_Softmax_Loss_embeddings.jpg)|![weibo-logo](https://github.com/YunYang1994/SphereFace/blob/master/image/3D_Angular_Softmax_Loss_embeddings.gif)|
+|![weibo-logo](https://github.com/YunYang1994/SphereFace/blob/master/image/3D_Original_Softmax_Loss_embeddings.gif)|![weibo-logo](https://github.com/YunYang1994/SphereFace/blob/master/image/3D_Modified_Softmax_Loss_embeddings.jpg)|![weibo-logo](https://github.com/YunYang1994/SphereFace/blob/master/image/3D_Angular_Softmax_Loss_embeddings.gif)|
 
 ### loss and accuracy
 |training loss|training accuracy|
