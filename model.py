@@ -6,7 +6,6 @@ import tensorflow as tf
 @platform: vim
 @author:   YunYang1994
 @email:    dreameryangyun@sjtu.edu.cn
-
 """
 
 class Model(object):
@@ -44,15 +43,18 @@ class Model(object):
 
     @staticmethod
     def network(inputs, embedding_dim=2):
-
+        
         def prelu(inputs, name=''):
             alpha = tf.get_variable(name, shape=inputs.get_shape(),
                                     initializer=tf.constant_initializer(0.0), dtype=inputs.dtype)
             return tf.maximum(alpha*inputs, inputs)
 
         def conv(inputs, filters, kernel_size, strides, w_init, padding='same', suffix='', scope=None):
+<<<<<<< HEAD
             conv_name = 'conv'+suffix
             relu_name = 'relu'+suffix
+=======
+>>>>>>> 5c0fb345a07ecc61e91703f6c6a7344a22c0ce76
             with tf.name_scope(name=scope):
                 if w_init == 'xavier':   w_init = tf.contrib.layers.xavier_initializer(uniform=True)
                 if w_init == 'gaussian': w_init = tf.contrib.layers.xavier_initializer(uniform=False)
@@ -67,7 +69,6 @@ class Model(object):
                 return net
 
         def resnet_block(net, blocks, suffix=''):
-
             n = len(blocks)
             for i in range(n):
                 if n == 2 and i == 0: identity = net
@@ -82,8 +83,6 @@ class Model(object):
 
                 if n == 3 and i == 0: identity = net
             return identity + net
-
-
 
         res1_3=[
             {'filters':64, 'kernel_size':3, 'strides':2, 'w_init':'xavier',   'padding':'same', 'suffix':'1'},
@@ -163,8 +162,6 @@ class Model(object):
         # embeddings = tf.layers.dense(net, units=embedding_dim, kernel_initializer=w_init)
         # return embeddings
 
-
-
     @staticmethod
     def Original_Softmax_Loss(embeddings, labels):
         """
@@ -179,7 +176,6 @@ class Model(object):
             # define cross entropy
             loss = tf.reduce_mean(tf.nn.sparse_softmax_cross_entropy_with_logits(logits=logits, labels=labels))
             return pred_prob, loss
-
 
     @staticmethod
     def Modified_Softmax_Loss(embeddings, labels):
