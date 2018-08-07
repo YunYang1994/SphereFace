@@ -30,11 +30,11 @@ mnist = input_data.read_data_sets("./MNIST_data", one_hot=False, reshape=False)
 
 # define training parameters
 lr = 0.001
-epochs = 100
-batch_size = 512
-train_batchs = 20 # the number of batchs per epoch
+epochs = 40
+batch_size = 256
+train_batchs = 40 # the number of batchs per epoch
 test_batchs  = 20
-embedding_dim = 2 # 3
+embedding_dim = 3 # 3
 loss_type = 2
 
 
@@ -83,7 +83,7 @@ def train(loss_type):
             # print(batch_acc)
             train_acc += batch_acc
         train_acc /= train_batchs
-        print(len(embeddings))
+        print("epoch %2d---------------------------train accuracy:%.4f" %(epoch+1, train_acc))
         visualize(embeddings, nlabels, epoch, train_acc, picname="./image/%d/%d.jpg"%(loss_type, epoch))
     # testing process
     test_acc = 0.
