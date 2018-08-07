@@ -3,7 +3,7 @@ import tensorflow as tf
 import numpy as np
 import model
 # import matplotlib.pyplot as plt
-from utils import visualize
+from utils import visualize, create_gif
 from tqdm import tqdm
 from tensorflow.examples.tutorials.mnist import input_data
 
@@ -35,7 +35,7 @@ batch_size = 512
 train_batchs = 20 # the number of batchs per epoch
 test_batchs  = 20
 embedding_dim = 2 # 3
-margin = 4 # angular softmax margin
+loss_type = 2
 
 
 
@@ -102,7 +102,12 @@ def train(loss_type):
 
 
 if __name__ == "__main__":
-    train(loss_type=2)
+
+    gif = ['original_softmax_loss.gif', 'modified_softmax_loss.gif', 'angular_softmax_loss.gif']
+    path = './image/%d/' %loss_type
+    gif_name = './image/%s' %gif[loss_type]
+    train(loss_type=loss_type)
+    create_gif(gif_name, path)
 
 
 
