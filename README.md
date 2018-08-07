@@ -12,7 +12,7 @@ This is a quick implementation for [Deep Hypersphere Embedding for Face Recognit
 - **1**. mathematical comparison among original softmax, modified softmax and angular softmax;
 - **2**. show the accuracy and loss comparison of different softmax in the experiment;
 - **3**. 2D and 3D visualization of embeddings learned with differnet softmax loss on MNIST dataset;
-- **4**. CNN model[(SphereFace-20)](https://arxiv.org/abs/1704.08063)
+- **4**. I replicated [SphereFace-20](http://ethereon.github.io/netscope/#/gist/20f6ddf70a35dec5019a539a502bccc5) mdoel with tensorflow.[code](https://github.com/YunYang1994/SphereFace/blob/master/model.py). [graph](https://github.com/YunYang1994/SphereFace/blob/master/image/model_graph.png).
 
 ### CNN-network
 many current CNNS can viewed as convolution feature learning guided by softmax loss on top. however, softmax is easy to to optimize but does not explicitly encourage large margin between different classes.
