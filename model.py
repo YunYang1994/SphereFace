@@ -59,17 +59,14 @@ class Model(object):
             net = tf.layers.conv2d(inputs, 32, [5,5], strides=1, padding='same', kernel_initializer=w_init)
             net = tf.layers.conv2d(net,    32, [5,5], strides=2, padding='same', kernel_initializer=w_init)
             net = tf.nn.relu(net)
-            net = tf.layers.max_pooling2d(net, [2,2], 2, padding='same')
         with tf.name_scope('conv2.x'):
             net = tf.layers.conv2d(net,    64, [5,5], strides=1, padding='same', kernel_initializer=w_init)
             net = tf.layers.conv2d(net,    64, [5,5], strides=2, padding='same', kernel_initializer=w_init)
             net = tf.nn.relu(net)
-            net = tf.layers.max_pooling2d(net, [2,2], 2, padding='same')
         with tf.name_scope('conv3.x'):
             net = tf.layers.conv2d(net,   128, [5,5], strides=1, padding='same',kernel_initializer=w_init)
             net = tf.layers.conv2d(net,   128, [5,5], strides=2, padding='same',kernel_initializer=w_init)
             net = tf.nn.relu(net)
-            net = tf.layers.max_pooling2d(net, [2,2], 2, padding='valid')
         net = tf.layers.flatten(net)
         embeddings = tf.layers.dense(net, units=embedding_dim, kernel_initializer=w_init)
         return embeddings
