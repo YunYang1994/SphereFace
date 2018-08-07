@@ -43,18 +43,16 @@ class Model(object):
 
     @staticmethod
     def network(inputs, embedding_dim=2):
-        
+
         def prelu(inputs, name=''):
             alpha = tf.get_variable(name, shape=inputs.get_shape(),
                                     initializer=tf.constant_initializer(0.0), dtype=inputs.dtype)
             return tf.maximum(alpha*inputs, inputs)
 
         def conv(inputs, filters, kernel_size, strides, w_init, padding='same', suffix='', scope=None):
-<<<<<<< HEAD
             conv_name = 'conv'+suffix
             relu_name = 'relu'+suffix
-=======
->>>>>>> 5c0fb345a07ecc61e91703f6c6a7344a22c0ce76
+
             with tf.name_scope(name=scope):
                 if w_init == 'xavier':   w_init = tf.contrib.layers.xavier_initializer(uniform=True)
                 if w_init == 'gaussian': w_init = tf.contrib.layers.xavier_initializer(uniform=False)

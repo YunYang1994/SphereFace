@@ -67,7 +67,7 @@ def train(loss_type):
     if loss_type ==0: f = open('./result/oringal_softmax_result.txt', 'w')
     if loss_type ==1: f = open('./result/modified_softmax_result.txt', 'w')
     if loss_type ==2: f = open('./result/angular_softmax_result.txt', 'w')
-    summary = tf.summary.FileWriter("./image/", sess.graph)
+    # summary = tf.summary.FileWriter("./image/", sess.graph)
 
     for epoch in range(epochs):
         nlabels = np.zeros((train_batchs*batch_size,), dtype=np.int32)
