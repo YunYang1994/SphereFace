@@ -34,8 +34,8 @@ epochs = 40
 batch_size = 256
 train_batchs = 40 # the number of batchs per epoch
 test_batchs  = 20
-embedding_dim = 3 # 3
-loss_type = 2
+embedding_dim = 2 # 3
+loss_type = 0
 
 
 
