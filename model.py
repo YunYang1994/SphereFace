@@ -6,7 +6,6 @@ import tensorflow as tf
 @platform: vim
 @author:   YunYang1994
 @email:    dreameryangyun@sjtu.edu.cn
-
 """
 
 class Model(object):
