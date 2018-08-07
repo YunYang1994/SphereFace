@@ -20,7 +20,7 @@ many current CNNS can viewed as convolution feature learning guided by softmax l
     <img width="70%" src="https://github.com/YunYang1994/SphereFace/blob/master/image/network.png" style="max-width:90%;">
     </a>
 </p>
-on this situation, the author proposed a new loss function that always encourages an angular decision margin between classes.
+on this situation, the author proposed a new loss function that always encourages an angular decision margin between different classes. 
 
 
 
