@@ -20,7 +20,7 @@ many current CNNS can viewed as convolution feature learning guided by softmax l
     <img width="70%" src="https://github.com/YunYang1994/SphereFace/blob/master/image/network.png" style="max-width:90%;">
     </a>
 </p>
-
+on this situation, the author proposed a new loss function that always encourages an angular decision margin between classes.
 
 
 
@@ -30,6 +30,8 @@ many current CNNS can viewed as convolution feature learning guided by softmax l
 |original softmax|![weibo-logo](https://github.com/YunYang1994/SphereFace/blob/master/image/original_softmax.png)|0.9775|
 |modified softmax|![weibo-logo](https://github.com/YunYang1994/SphereFace/blob/master/image/modified_softmax.png)|0.9847|
 |angular softmax|![weibo-logo](https://github.com/YunYang1994/SphereFace/blob/master/image/angular_softmax.png)|0.9896|
+
+A toy example on MNIST dataset, CNN features can be visualized by setting the output dimension as 2 or 3, as shown in following figures.
 
 ### 2D visualization
 |original softmax|modified softmax|angular softmax|
