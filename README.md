@@ -11,7 +11,7 @@ This is a quick implementation for [Deep Hypersphere Embedding for Face Recognit
 
 - **1**. mathematical comparison among original softmax, modified softmax and angular softmax;
 - **2**. show the accuracy and loss comparison of different softmax in the experiment;
-- **3**. 2D and 3D visualization of embeddings learned with differnet softmax loss on MNIST dataset;
+- **3**. 2D and 3D visualization of embeddings learned with different softmax loss on MNIST dataset;
 - **4**. I replicated [SphereFace-20](http://ethereon.github.io/netscope/#/gist/20f6ddf70a35dec5019a539a502bccc5) model with tensorflow.and here is [code](https://github.com/YunYang1994/SphereFace/blob/master/model.py) and [graph](https://github.com/YunYang1994/SphereFace/blob/master/image/model_graph.png).
 
 ### CNN-network
